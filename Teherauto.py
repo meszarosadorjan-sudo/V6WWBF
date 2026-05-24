@@ -28,8 +28,8 @@ class Teherauto(Auto):
         return self._kiadva
 
     @property
-    def foglalasok(self):
-        return self._foglalasok
+    def berlesek(self):
+        return self._berlesek
     
     def booking_car(self):
         while True:
@@ -43,11 +43,11 @@ class Teherauto(Auto):
         
                 if megadott_datum_szoveg >= mai_datum_szam:
                     # Ellenőrzés, hogy szerepel-e foglalások között a dátum
-                    mar_foglalt = any(lista[0] == datum_szoveg for lista in self._foglalasok)
+                    mar_foglalt = any(lista[0] == datum_szoveg for lista in self._berlesek)
             
                     if not mar_foglalt:
                         ugyfel = input("Adja meg az ügyfél nevét: ")
-                        self._foglalasok.append([datum_szoveg, ugyfel])
+                        self._berlesek.append([datum_szoveg, ugyfel])
                 
                         terminal_torles()
                         print("Sikeresen lefoglalta a gépjárművet!")
@@ -62,13 +62,13 @@ class Teherauto(Auto):
                 print("Hibás adatbevitel / dátumformátum! Használja az ÉÉÉÉHHNN formátumot!")
 
     def unbooking_car(self):
-        if not self._foglalasok:
+        if not self._berlesek:
             terminal_torles()
             print("Jelenleg nincs foglalás erre a gépjárműre!")
             
         else:
             n = 0
-            for lista in self._foglalasok:
+            for lista in self._berlesek:
                 print(f"{n}.\t{lista}")
                 n = n+1
             print("-----------------------------")
@@ -76,7 +76,7 @@ class Teherauto(Auto):
                 try:
                     valasztas = int(input("Melyik foglalást szeretné törölni? "))
                     if 0 <= valasztas <= n:
-                        del self._foglalasok[valasztas]
+                        del self._berlesek[valasztas]
                         terminal_torles()
                         print("Sikeresen törölte a foglalást a gépjárműröl!")
                         break
@@ -85,4 +85,4 @@ class Teherauto(Auto):
 
     def upload(self):
         if self._rendszam == "RTZ100":
-            self._foglalasok.append(["20261210", "Géza bácsi"])
+            self._berlesek.append(["20261210", "Géza bácsi"])
