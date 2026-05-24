@@ -5,7 +5,7 @@ class Auto(ABC):
         self._rendszam = rendszam
         self._tipus = tipus
         self._berleti_dij = berleti_dij
-        self._foglalasok = []
+        self._berlesek = []
     
 @abstractmethod
 def book_room(self):
