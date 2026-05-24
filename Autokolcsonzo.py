@@ -14,19 +14,19 @@ class Autokolcsonzo:
         return self._name
 
     @property
-    def foglalasok(self):
-        return self._foglalasok
+    def berlesek(self):
+        return self._berlesek
     
     @property
     def autok(self):
         for car in self._autok:
             print(f"Rendszám: {car.rendszam}\t| Típus: {car.tipus}\t| Bérleti díj: {car.berleti_dij}")
-            if not car.foglalasok:
+            if not car.berlesek:
                 print("Jelenleg nincs foglalás a gépjárműre!")
                 print("-\t-\t-\t-\t-\t-\t-\t-\t-")
             else:
                 print(f"A következő foglalások vannak rögzítve:")
-                for lista in car.foglalasok:
+                for lista in car.berlesek:
                     print(lista)
                 print("-\t-\t-\t-\t-\t-\t-\t-\t-")
 # Adatfeltöltéshez szükséges
